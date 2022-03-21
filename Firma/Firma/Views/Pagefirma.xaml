@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:signature="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+             x:Class="Firma.Views.Pagefirma"
+             Title="Tarea de Firma Favio Aguilera">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DsStackLayout" TargetType="StackLayout">
+                <Setter Property="Margin" Value="5,10"/>
+                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+            </Style>
+
+            <Style x:Key="DsButtonFlotante" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="BorderColor" Value="#01ADBA"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="40"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="WidthRequest" Value="60"/>
+            </Style>
+            <Style x:Key="entryFormStyle" TargetType="Entry">
+                <Setter Property="Margin" Value="10,0"/>
+                <Setter Property="FontFamily" Value="SansLight"/>
+                <Setter Property="FontSize" Value="18"/>
+
+
+                <Setter Property="PlaceholderColor" Value="Gray"/>
+                <Setter Property="TextColor" Value="#423F3E"/>
+            </Style>
+
+            <Style x:Key="frameStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Padding" Value="3"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+                <Setter Property="BorderColor" Value="#E7E4E3"/>
+                <Setter Property="Margin" Value="20,5"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ScrollView>
+        <StackLayout>
+            <StackLayout Padding="20">
+                <Image Grid.Row="0" Source="https://www.uth.hn/wp-content/uploads/2019/12/logo-1.png"></Image>
+            </StackLayout>
+            
+            <signature:SignaturePadView x:Name="signature" HorizontalOptions="FillAndExpand" StrokeColor="Blue"
+                                VerticalOptions="StartAndExpand" HeightRequest="300" MinimumHeightRequest="300" />
+
+            <StackLayout VerticalOptions="CenterAndExpand" Orientation="Vertical" Margin="0,0,10,100" >
+                <Frame Style="{StaticResource frameStyle}">
+                    <Entry Style="{StaticResource entryFormStyle}"
+                        Keyboard="Plain"
+                        Placeholder="Nombre del usuario"
+                        IsReadOnly="False"
+                        x:Name="txtNombre" />
+                </Frame>
+
+                <Frame Style="{StaticResource frameStyle}" >
+                    <Entry Style="{StaticResource entryFormStyle}"
+                        Keyboard="Plain"
+                        Placeholder="Debera ingresar una descripcion"
+                        IsReadOnly="False"
+                        x:Name="txtDescripcion" />
+                </Frame>
+
+                <Button VerticalOptions="CenterAndExpand" x:Name="btnSubmit" Clicked="btnSubmit_Clicked" Text="Guardar Firma"></Button>
+                <Button VerticalOptions="CenterAndExpand" x:Name="btnlist" Clicked="btnlist_Clicked"  Visual="Material" Text="Ver Registros"></Button>
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

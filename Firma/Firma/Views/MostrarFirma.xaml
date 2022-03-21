@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Firma.Interface;assembly=Firma"
+             x:Class="Firma.Views.MostrarFirma" BackgroundColor="White" Title="Lista de firmas registradas">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ConverterBase64ImageSource x:Key="Base64ToImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView x:Name="listastfirmas"  HasUnevenRows="True" SeparatorVisibility="None" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell  >
+
+                            <Grid Padding="10" >
+
+                                <Frame CornerRadius="10" HasShadow="True">
+
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItem  Text="Ver Detalles"
+                                                        BackgroundColor="Blue"
+                                                       />
+                                        </SwipeView.RightItems>
+
+                                        <StackLayout Orientation="Horizontal"  BackgroundColor="White">
+                                            <Image  Grid.RowSpan="3" Source="{Binding base_64, Converter={StaticResource Base64ToImageConverter}}"   
+                                                     HeightRequest="90" WidthRequest="130"/>
+
+                                            <StackLayout Orientation="Vertical" BackgroundColor="White">
+
+                                                <Label   Grid.Row="1" Grid.Column="0"  Margin="2" FontAttributes="Bold" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Codigo: "/>
+                                                            <Span  Text="{Binding codigo}"  />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label   Grid.Row="2" Grid.Column="0"  Margin="2" FontAttributes="Bold" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Nombre: "/>
+                                                            <Span  Text="{Binding nombre}"  />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label   Grid.Row="3" Grid.Column="0"  Margin="2" FontAttributes="Bold" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Descripcion: "/>
+                                                            <Span  Text="{Binding descripcion}"  />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </SwipeView>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
